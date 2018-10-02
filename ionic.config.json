@@ -1,0 +1,7 @@
+{
+  "name": "GreenLean",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
