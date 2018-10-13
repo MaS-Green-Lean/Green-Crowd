@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MapPage } from '../pages/map/map';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
+import { CamelCaseConvert } from '../pipe/camel-case.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ItemDetailPage } from '../pages/item-detail/item-detail';
     HomePage,
     ListPage,
     MapPage,
-    ItemDetailPage
+    ItemDetailPage, 
+    CamelCaseConvert
   ],
   imports: [
     BrowserModule,

@@ -9,12 +9,12 @@ import { ItemDetailPage } from '../item-detail/item-detail';
 })
 export class ListPage {
   private items = [
-    new Produce('Gala Apple', 1.10),
+    new Produce('GalaApple', 1.10),
     new Produce('Zucchini', 1.10),
     new Produce('Pear', 1.10),
     new Produce('Cucumber', 1.10),
-    new Produce('Butternut Squash', 1.10),
-    new Produce('Pumkin', 1.10),
+    new Produce('ButternutSquash', 1.10),
+    new Produce('Pumpkin', 1.10),
     new Produce('Peach', 1.10),
     new Produce('Orange', 1.10)
   ];
