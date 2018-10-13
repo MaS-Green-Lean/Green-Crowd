@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # The Ionic Super Starter 🎮
 
 <img src="https://user-images.githubusercontent.com/236501/32385619-bddac0ac-c08c-11e7-9ee4-9c892197191f.png" width="400" />
@@ -100,3 +101,6 @@ To change the language of the app, edit `src/app/app.component.ts` and modify
 
 
 testing123
+=======
+To get google maps up and running (which I currently have not done because of some runtime bs) you need to follow the first two instructions [HERE] (https://github.com/ionic-team/ionic-native-google-maps/blob/master/documents/README.md "Ionic GoogleMaps Demo")
+>>>>>>> 3f4d14748caff4d4206ff9fb0f046daa6df6d464
