@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ToastController } from '@ionic/angular';
 
 import { MapPage } from './map.page';
-
 import { GoogleMaps } from '@ionic-native/google-maps';
 
 
@@ -17,6 +16,6 @@ import { GoogleMaps } from '@ionic-native/google-maps';
     IonicModule,
   ],
   declarations: [MapPage],
-  providers: [  ]
+  providers: [ ToastController ]
 })
 export class MapPageModule {}

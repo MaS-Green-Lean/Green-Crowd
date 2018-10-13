@@ -15,7 +15,7 @@ import {
   styleUrls: ['./map.page.scss'],
 })
 export class MapPage implements OnInit {
-  mapReady: boolean = false;
+  mapReady = false;
   map: GoogleMap;
 
   constructor(public toastCtrl: ToastController) {
@@ -84,7 +84,7 @@ export class MapPage implements OnInit {
   }
 
   showToast(message: string) {
-    let toast = this.toastCtrl.create({
+    const toast = this.toastCtrl.create({
       message: message,
       duration: 2000,
       position: 'middle'
