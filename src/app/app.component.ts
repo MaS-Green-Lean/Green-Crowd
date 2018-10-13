@@ -1,44 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform, MenuController, Nav } from 'ionic-angular';
+
+import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
+import { ListPage } from '../pages/list/list';
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.html'
 })
-export class AppComponent {
-  public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-    {
-      title: 'Map',
-      url: '/map',
-      icon: 'map'
-    }
-  ];
+export class MyApp {
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(
-    private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar
-  ) {
+  rootPage: any;  // <<< Do not set the root page until the platform.ready()
+                  //      This avoids to face the plugin loading error.
+
+  pages: Array<{title: string, component: any}>;
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
+      this.rootPage = HelloIonicPage;    // <<< Set the first page after native side is ready. So, you don't need to write platform.ready() in anypage anymore.
+
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+  openPage(page) {
+    this.nav.setRoot(page.component);
   }
 }
