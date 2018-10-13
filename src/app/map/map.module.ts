@@ -9,21 +9,14 @@ import { MapPage } from './map.page';
 
 import { GoogleMaps } from '@ionic-native/google-maps';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: MapPage
-  }
-];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
   ],
   declarations: [MapPage],
-  providers: [ GoogleMaps ]
+  providers: [  ]
 })
 export class MapPageModule {}
