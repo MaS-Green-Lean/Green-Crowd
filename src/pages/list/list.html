@@ -16,11 +16,8 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
+    <ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       {{item.name}} ${{item.price}}
     </ion-item>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

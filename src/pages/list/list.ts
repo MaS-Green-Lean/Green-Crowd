@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Produce } from '../../model/produce';
+import { ItemDetailPage } from '../item-detail/item-detail';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
   private items = [
     new Produce('Gala Apple', 1.10),
     new Produce('Zucchini', 1.10),
@@ -22,12 +22,11 @@ export class ListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
   }
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
+    this.navCtrl.push(ItemDetailPage, {
       item: item
     });
   }
