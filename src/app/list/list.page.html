@@ -9,14 +9,17 @@
   </ion-toolbar>
 </ion-header>
 
+<ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="searchItems($event)"
+  (ionCancel)="cancelSearch($event)">
+</ion-searchbar>
+
 <ion-content>
   <ion-list>
     <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
+      {{item.name}} ${{item.price}}
     </ion-item>
   </ion-list>
   <!--

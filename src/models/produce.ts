@@ -1,3 +1,3 @@
 export class Produce {
-    constructor(private name, private price) {}
+    constructor(public name, public price) {}
 }
