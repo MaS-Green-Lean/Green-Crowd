@@ -1,0 +1,7 @@
+{
+  "name": "MaSApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
