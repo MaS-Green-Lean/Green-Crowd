@@ -9,14 +9,14 @@ import { ItemDetailPage } from '../item-detail/item-detail';
 })
 export class ListPage {
   private items = [
-    new Produce('GalaApple', 1.10),
-    new Produce('Zucchini', 1.10),
-    new Produce('Pear', 1.10),
-    new Produce('Cucumber', 1.10),
-    new Produce('ButternutSquash', 1.10),
-    new Produce('Pumpkin', 1.10),
-    new Produce('Peach', 1.10),
-    new Produce('Orange', 1.10)
+    new Produce('GalaApple', 1.99, 0.28),
+    new Produce('Zucchini', 2.19, 0.21),
+    new Produce('BoscPear', 1.19, 0.31),
+    new Produce('Cucumber', 0.89, 2.1),
+    new Produce('ButternutSquash', 1.19, 0.25),
+    new Produce('Pumpkin', 1.19, 0.44),
+    new Produce('Peach', 3.29, 0.49),
+    new Produce('Orange', 1.89, 0.35)
   ];
   private allItems = this.items;
 
