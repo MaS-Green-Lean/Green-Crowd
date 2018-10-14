@@ -13,6 +13,23 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+    <ion-card>
+      <ion-row>
+        <ion-col col-1></ion-col>
+        <ion-col col-10>
+          <img src="assets/imgs/{{item.name}}.jpg"/>
+        </ion-col>
+        <ion-col col-1></ion-col>
+      </ion-row>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.name | camelCaseConvert}}
+      </ion-card-title>
+      <ion-list>
+        Lowest Price: ${{item.price}}/lb
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
