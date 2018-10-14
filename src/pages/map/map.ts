@@ -7,7 +7,9 @@ import {
   GoogleMapsEvent,
   Marker,
   GoogleMapsAnimation,
-  MyLocation
+  MyLocation,
+  Geocoder,
+  GeocoderResult
 } from '@ionic-native/google-maps';
 
 /**
@@ -23,6 +25,18 @@ import {
 })
 export class MapPage {
   map: GoogleMap;
+  shops_addres: string[] = [
+    "1715 Howell Mill Rd NW, Atlanta, GA 30318",
+    "1380 Atlantic Dr NW Ste 14135, Atlanta, GA 30363",
+    "375 18th St NW, Atlanta, GA 30363"
+  ];
+
+  shop_names: string[] = [
+    "Kroger",
+    "Publix",
+    "Target"
+  ];
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
   }
@@ -44,11 +58,13 @@ export class MapPage {
         tilt: 30
       }
     });
+
+    for(let i in [0,1,2]) {
+      this.setMarker(this.shops_addres[i],this.shop_names[i]);
+    }
   }
 
   onButtonClick() {
-    this.map.clear();
-
     // Get the location of you
     this.map.getMyLocation()
       .then((location: MyLocation) => {
@@ -63,21 +79,34 @@ export class MapPage {
         .then(() => {
           // add a marker
           let marker: Marker = this.map.addMarkerSync({
-            title: '@ionic-native/google-maps plugin!',
-            snippet: 'This plugin is awesome!',
+            snippet: 'Current Location',
             position: location.latLng,
             animation: GoogleMapsAnimation.BOUNCE
           });
 
           // show the infoWindow
           marker.showInfoWindow();
-
-          // If clicked it, display the alert
-          marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-            this.showToast('clicked!');
-          });
         });
       });
+  }
+
+  setMarker(address: string, title: string) {
+    Geocoder.geocode({
+      "address": address
+    }).then((results: GeocoderResult[]) => {
+      console.log(results);
+  
+      if (!results.length) {
+        return null;
+      }
+  
+      // Add a marker
+      let marker: Marker = this.map.addMarkerSync({
+        snippet: title,
+        'position': results[0].position,
+        'title':  title
+      });
+    });
   }
 
   showToast(message: string) {    
