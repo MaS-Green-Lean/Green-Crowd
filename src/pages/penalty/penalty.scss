@@ -1,0 +1,39 @@
+page-penalty {
+    #item_wrapper {
+        border: 1px solid black;
+        position: relative;
+      }
+
+      #map_canvas {
+        height:500px;
+      }
+    
+      #price_input_box {
+        width:80%;
+        font-size: 200%;
+        position: relative;
+      }
+    
+      #price_Wrapper {
+        border: 1px solid black;
+        position: relative;
+      }
+    
+      #item_input_box {
+        width:80%;
+        font-size: 200%;
+        position: relative;
+      }
+    
+      h2 h3 {
+        position: relative;;
+      }
+    
+      #submit_button {
+        border: 1px solid black;
+        font-size: 300%;
+        width: 100%;
+        height: 100px;
+        background:rgb(106, 202, 106);
+      }
+}

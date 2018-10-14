@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
+import { PenaltyPage } from '../pages/penalty/penalty';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Map', component: MapPage },
-      { title: 'Reward', component:RewardPage}
+      { title: 'Reward', component:RewardPage },
+      { title: 'Penalty', component:PenaltyPage }
     ];
 
   }

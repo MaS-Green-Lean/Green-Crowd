@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Penalty</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <div *ngIf="!this.access; else map_access">
+        <h3>You must enter pricing data to access map</h3>
+
+        <div id="item_wrapper">
+          <h2>Item: </h2>
+          <ion-input id="item_input_box" type="text" [(ngModel)]="item" text-left id="input" ></ion-input>
+        </div>
+      
+        <div id="price_Wrapper">
+          <h2>Price: </h2>
+          <ion-input  id="price_input_box" type="number" [(ngModel)]="price" text-left id="input" ></ion-input>
+        </div>
+      
+        <button id="submit_button" (click)="onSumbitButtonClick()">Submit</button>
+    </div>
+    <div *ngIf="this.access">
+      <h2>Map Access granted</h2>
+      <div id=map_canvas>
+          <button ion-button (click)="onFindCurrentLocationButtonClick($event)">Go to Current Location</button>
+      </div>
+    </div>
+</ion-content>

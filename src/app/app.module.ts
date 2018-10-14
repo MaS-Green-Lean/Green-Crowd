@@ -9,6 +9,7 @@ import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { CamelCaseConvert } from '../pipe/camel-case.pipe';
+import { PenaltyPage } from '../pages/penalty/penalty'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MapPage,
     RewardPage,
     ItemDetailPage, 
-    CamelCaseConvert
+    CamelCaseConvert,
+    PenaltyPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ListPage,
     MapPage,
     RewardPage,
-    ItemDetailPage
+    ItemDetailPage,
+    PenaltyPage
   ],
   providers: [
     StatusBar,
