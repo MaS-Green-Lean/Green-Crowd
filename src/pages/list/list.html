@@ -16,11 +16,18 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
-      {{item.name}} ${{item.price}}
-    </ion-item>
+    <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+      <div >
+        <img height="100%" src="assets/imgs/{{item.name}}.jpg"/>
+      </div>
+      <div class="container">
+        <ion-card-title>
+            {{item.name | camelCaseConvert }}
+        </ion-card-title>
+        <p>
+            Lowest Price: ${{item.price}}/lb
+        </p>
+      </div>
+    </ion-card>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

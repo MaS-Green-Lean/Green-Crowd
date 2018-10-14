@@ -1,33 +1,32 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Produce } from '../../model/produce';
+import { ItemDetailPage } from '../item-detail/item-detail';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
 export class ListPage {
-  selectedItem: any;
   private items = [
-    new Produce('Gala Apple', 1.10),
-    new Produce('Zucchini', 1.10),
-    new Produce('Pear', 1.10),
-    new Produce('Cucumber', 1.10),
-    new Produce('Butternut Squash', 1.10),
-    new Produce('Pumkin', 1.10),
-    new Produce('Peach', 1.10),
-    new Produce('Orange', 1.10)
+    new Produce('GalaApple', 1.99, 0.28),
+    new Produce('Zucchini', 2.19, 0.21),
+    new Produce('BoscPear', 1.19, 0.31),
+    new Produce('Cucumber', 0.89, 2.1),
+    new Produce('ButternutSquash', 1.19, 0.25),
+    new Produce('Pumpkin', 1.19, 0.44),
+    new Produce('Peach', 3.29, 0.49),
+    new Produce('Orange', 1.89, 0.35)
   ];
   private allItems = this.items;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
   }
 
   itemTapped(event, item) {
     // That's right, we're pushing to ourselves!
-    this.navCtrl.push(ListPage, {
+    this.navCtrl.push(ItemDetailPage, {
       item: item
     });
   }
