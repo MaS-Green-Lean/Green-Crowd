@@ -1,0 +1,29 @@
+<!--
+  Generated template for the RewardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Reward</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <h3>Level so far : {{this.ctr}} </h3>
+
+  <div id="item_wrapper">
+    <h2>Item: </h2>
+    <ion-input id="item_input_box" type="text" [(ngModel)]="item" text-left id="input" ></ion-input>
+  </div>
+
+  <div id="price_Wrapper">
+    <h2>Price: </h2>
+    <ion-input  id="price_input_box" type="number" [(ngModel)]="price" text-left id="input" ></ion-input>
+  </div>
+
+  <button (click)="onSumbitButtonClick()">Submit</button>
+</ion-content>
