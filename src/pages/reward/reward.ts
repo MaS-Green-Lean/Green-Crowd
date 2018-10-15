@@ -50,7 +50,7 @@ export class RewardPage {
     let toast = this.toastCtrl.create({
       message: message,
       duration: 2000,
-      position: 'middle'
+      position: 'bottom'
     });
 
     toast.present(toast);

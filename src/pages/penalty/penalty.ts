@@ -45,8 +45,8 @@ export class PenaltyPage {
     this.map = GoogleMaps.create('map_canvas', {
       camera: {
         target: {
-          lat: 43.0741704,
-          lng: -89.3809802
+          lat: 33.7756,
+          lng: -84.3963
         },
         zoom: 18,
         tilt: 30
@@ -100,7 +100,7 @@ export class PenaltyPage {
     let toast = this.toastCtrl.create({
       message: message,
       duration: 2000,
-      position: 'middle'
+      position: 'bottom'
     });
 
     toast.present(toast);
