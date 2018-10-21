@@ -42,11 +42,11 @@ export class RewardPage {
       this.ctr += 1;
       this.item = "";
       this.price = null;
-      this.showToast("Congradulations you have reached rank : " + this.ranks[this.ctr]);
+      this.showToast("congratulations you have reached rank : " + this.ranks[this.ctr]);
     }
   }
 
-  showToast(message: string) {    
+  showToast(message: string) {
     let toast = this.toastCtrl.create({
       message: message,
       duration: 2000,
