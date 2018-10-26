@@ -8,5 +8,21 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Green Crowd :  Home</h3>
+  <img src="assets/imgs/name_art_white_outline.png"/>
+
+
+  <button ion-button full (click)="selectSource()">Select Image</button>
+  <button ion-button full (click)="recognizeImage()" [disabled]="!selectedImage">Recognize Image</button>
+ 
+  <img [src]="selectedImage" *ngIf="selectedImage">
+
+  <ion-card *ngIf="imageText">
+      <ion-card-header>
+        Image Text
+      </ion-card-header>
+      <ion-card-content>
+        {{ imageText }}
+      </ion-card-content>
+    </ion-card>
+    {{this.progress}}
 </ion-content>
