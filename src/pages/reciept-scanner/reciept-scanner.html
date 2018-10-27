@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Upload Reciept</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <button ion-button full (click)="selectSource()">Select Image</button>
+    <button ion-button full (click)="recognizeImage()" [disabled]="!selectedImage">Recognize Image</button>
+   
+    <img [src]="selectedImage" *ngIf="selectedImage">
+  
+    <ion-card *ngIf="imageText">
+        <ion-card-header>
+          Image Text
+        </ion-card-header>
+        <ion-card-content>
+          {{ imageText }}
+        </ion-card-content>
+      </ion-card>
+      {{this.progress}}
+</ion-content>
