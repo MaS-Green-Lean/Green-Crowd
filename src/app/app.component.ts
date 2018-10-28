@@ -31,13 +31,7 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Shopping Checklist', component: ShoppingChecklistPage },
       { title: 'Upload Receipt', component: UploadReceiptPage },
-<<<<<<< HEAD
       { title: 'Browse Items', component:BrowsePage}
-=======
-      { title: 'Map', component: MapPage },
-      { title: 'Reward', component:RewardPage },
-      { title: 'Penalty', component:PenaltyPage }
->>>>>>> 340c22d9f641559a3cf619e58e6b825dc9b4c6de
     ];
 
   }

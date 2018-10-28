@@ -8,9 +8,27 @@ import { Camera, PictureSourceType } from '@ionic-native/camera';
 })
 export class UploadReceiptPage {
   selectedImage: string;
-  imageText: string;
+  processingMsg: string;
+  
+  public receiptItems;
   
   constructor(public navCtrl: NavController, private camera: Camera, private actionSheetCtrl: ActionSheetController) {
+  }
+
+  ionViewDidLoad(){
+ 
+    this.receiptItems = [
+      { title: 'Clementines', cost: 4.99  },
+      { title: 'Graeters Ice Cream', cost: 5.49 },
+      { title: 'Cambles Soup', cost: 2.49 },
+      { title: 'Butter', cost:2.99 },
+      { title: 'Quaker Oatmeal', cost:5.29},
+      { title: 'Peanuts', cost:1.69 },
+      { title: 'Almonds', cost:4.49 },
+      { title: 'HoneyCrisp Apples', cost:2.71 },
+      { title: 'Green Beans', cost: 1.69}
+    ];
+ 
   }
 
   selectSource() {
@@ -45,11 +63,7 @@ export class UploadReceiptPage {
       correctOrientation: true
     }).then((imageData) => {
       this.selectedImage = `data:image/jpeg;base64,${imageData}`;
+      this.processingMsg = "Image Processed and uploaded"
     })
   }
-
-  recognizeImage() {
-
-  }
-
 }

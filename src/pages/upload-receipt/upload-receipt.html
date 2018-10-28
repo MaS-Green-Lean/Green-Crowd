@@ -10,16 +10,25 @@
 
 <ion-content padding>
   <button ion-button full (click)="selectSource()">Select Image</button>
-  <button ion-button full (click)="recognizeImage()" [disabled]="!selectedImage">Recognize Image</button>
  
   <img [src]="selectedImage" *ngIf="selectedImage">
-
-  <ion-card *ngIf="imageText">
+  
+  <ion-card *ngIf="processingMsg">
       <ion-card-header>
-        Image Text
+        {{ processingMsg }}
       </ion-card-header>
       <ion-card-content>
-        {{ imageText }}
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>Item</ion-col>
+          <ion-col>Cost</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of receiptItems">
+          <ion-col>{{item.title}}</ion-col>
+          <ion-col>{{item.cost}}</ion-col>
+        </ion-row>
+      </ion-grid>
       </ion-card-content>
     </ion-card>
 </ion-content>
