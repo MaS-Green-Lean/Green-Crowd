@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import {
@@ -11,6 +11,9 @@ import {
   Geocoder,
   GeocoderResult
 } from '@ionic-native/google-maps';
+import { StoreService } from '../../services/store.service';
+import { Store } from '../../model/store';
+import { Subscription } from 'rxjs/Subscription';
 
 /**
  * Generated class for the MapPage page.
@@ -23,24 +26,20 @@ import {
   selector: 'page-map',
   templateUrl: 'map.html',
 })
-export class MapPage {
+export class MapPage implements OnInit {
+  stores$: Subscription;
+  stores: Store[];
   map: GoogleMap;
-  shops_address: string[] = [
-    "1715 Howell Mill Rd NW, Atlanta, GA 30318",
-    "1380 Atlantic Dr NW Ste 14135, Atlanta, GA 30363",
-    "375 18th St NW, Atlanta, GA 30363"
-  ];
-
-  shop_names: string[] = [
-    "Kroger",
-    "Publix",
-    "Target"
-  ];
-
   item: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public storeService: StoreService) {
+  }
+
+  ngOnInit() {
+    this.stores$ = this.storeService.getAllStores().subscribe((stores: Store[]) => {
+      this.stores = stores;
+    })
   }
 
   ionViewDidLoad() {
@@ -61,8 +60,8 @@ export class MapPage {
       }
     });
 
-    for(let i in [0,1,2]) {
-      this.setMarker(this.shops_address[i],this.shop_names[i]);
+    for (let store of this.stores) {
+      this.setMarker(store.address, store.name);
     }
 
     this.map.getMyLocation()
@@ -91,24 +90,24 @@ export class MapPage {
 
   onSearchButtonClick() {
     this.map.clear();
-    for(let i in [0,1,2]) {
-      this.setMarkersPostSearch(this.shops_address[i],this.shop_names[i],this.item, this.getRandomPrice());
+    for (let store of this.stores) {
+      this.setMarkersPostSearch(store.address, store.name, this.item, this.getRandomPrice());
     }
 
     this.map.getMyLocation()
-    .then((location: MyLocation) => {
-      console.log(JSON.stringify(location, null ,2));
+      .then((location: MyLocation) => {
+        console.log(JSON.stringify(location, null ,2));
 
-      // add a marker
-      let marker: Marker = this.map.addMarkerSync({
-        snippet: 'Current Location',
-        position: location.latLng,
-        animation: GoogleMapsAnimation.DROP
+        // add a marker
+        let marker: Marker = this.map.addMarkerSync({
+          snippet: 'Current Location',
+          position: location.latLng,
+          animation: GoogleMapsAnimation.DROP
+        });
+
+        // show the infoWindow
+        marker.showInfoWindow();
       });
-
-      // show the infoWindow
-      marker.showInfoWindow();
-    });
   }
 
   setMarker(address: string, title: string) {

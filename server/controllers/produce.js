@@ -33,10 +33,7 @@ module.exports.create = (req, res, next) => {
           store.produce.push(produce)
           store.save((err, updated) => {
             if (err) {
-              res.locals.error = {
-                status: 500,
-                msg: 'Unable to save changes to db'
-              }
+              res.status(500).json('Unable to save changes to db')
             }
             res.status(200).json(updated)
             return next()

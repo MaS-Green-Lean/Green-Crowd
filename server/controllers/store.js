@@ -1,5 +1,4 @@
 const Store = require('mongoose').model('Store')
-const Produce = require('mongoose').model('Produce')
 
 module.exports.create = (req, res, next) => {
   if (!req.body.name) {
@@ -46,15 +45,10 @@ module.exports.get = (req, res, next) => {
 module.exports.getAll = (req, res, next) => {
   Store.find({}, (err, stores) => {
     if (err) {
-      res.locals.error = {
-        status: 500,
-        msg: 'error: ' + err
-      }
+      res.status(500).json('error: ' + err)
       return next()
     } else {
-      res.locals.data = {
-        stores: stores
-      }
+      res.status(200).json(stores)
       return next()
     }
   })
@@ -82,14 +76,9 @@ module.exports.update = (req, res, next) => {
       }
       store.save((err, updated) => {
         if (err) {
-          res.locals.error = {
-            status: 500,
-            msg: 'Unable to save changes to db'
-          }
+          res.status(500).json('Unable to save changes to db')
         }
-        res.locals.data = {
-          store: updated,
-        }
+        res.status(200).json(updated)
         return next()
       })
     }

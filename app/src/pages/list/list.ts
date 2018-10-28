@@ -28,7 +28,6 @@ export class ListPage implements OnInit {
   }
 
   itemTapped(event, item) {
-    // That's right, we're pushing to ourselves!
     this.navCtrl.push(ItemDetailPage, {
       item: item
     });
@@ -48,7 +47,7 @@ export class ListPage implements OnInit {
   });
   }
 
-  // private cancelSearch(searchbar) {
-  //   this.produce = this.allItems;
-  // }
+  private cancelSearch(searchbar) {
+    this.produce = this.allItems.produce;
+  }
 }
