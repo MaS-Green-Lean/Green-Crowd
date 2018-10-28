@@ -9,6 +9,8 @@ import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { PenaltyPage } from '../pages/penalty/penalty';
+import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
+import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,6 +28,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Shopping Checklist', component: ShoppingChecklistPage },
+      { title: 'Upload Receipt', component: UploadReceiptPage },
       { title: 'List', component: ListPage },
       { title: 'Map', component: MapPage },
       { title: 'Reward', component:RewardPage },
