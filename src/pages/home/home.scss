@@ -1,3 +1,24 @@
 page-home {
+    ion-card {
+        height: 80px;
+        display: flex;
 
+        img {
+            width: auto;
+        }
+
+        .image-container {
+            height: 100%;
+            background-size: contain;
+        }
+
+        .container {
+            padding-right: 20px;
+            width: 100%;
+            text-align: right;
+        }
+    }
+    ion-img {
+        background-color: white;
+    }
 }

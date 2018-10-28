@@ -8,7 +8,25 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ShoppingChecklistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public items;
+ 
+  constructor(public navCtrl: NavController) {
+ 
+  }
+ 
+  ionViewDidLoad(){
+ 
+    this.items = [
+      { title: 'Orange' },
+      { title: 'Pumpkin' },
+      { title: 'Butternut Squash' },
+      { title: 'Cucumber' },
+      { title: 'Bosc Pear'},
+      { title: 'Zucchini' },
+      { title: 'Gala Apple' },
+      { title: 'Peach' }
+    ];
+ 
   }
 
 }

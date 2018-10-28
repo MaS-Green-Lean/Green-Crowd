@@ -7,6 +7,27 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Green Crowd :  Home</h3>
+<ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="searchItems($event)"
+  (ionCancel)="cancelSearch($event)">
+</ion-searchbar>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let item of produce" (click)="itemTapped($event, item)">
+      <div >
+        <img height="100%" src="assets/imgs/{{item.name}}.jpg"/>
+      </div>
+      <div class="container">
+        <ion-card-title>
+            {{item.name | camelCaseConvert }}
+        </ion-card-title>
+        <p>
+            Lowest Price: ${{item.price}}/lb
+        </p>
+      </div>
+    </ion-card>
+  </ion-list>
 </ion-content>

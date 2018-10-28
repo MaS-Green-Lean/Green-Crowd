@@ -11,6 +11,7 @@ import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { PenaltyPage } from '../pages/penalty/penalty';
 import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
 import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
+import { BrowsePage } from '../pages/browse/browse';
 
 @Component({
   templateUrl: 'app.html'
@@ -30,10 +31,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'Shopping Checklist', component: ShoppingChecklistPage },
       { title: 'Upload Receipt', component: UploadReceiptPage },
-      { title: 'List', component: ListPage },
-      { title: 'Map', component: MapPage },
-      { title: 'Reward', component:RewardPage },
-      { title: 'Penalty', component:PenaltyPage }
+      { title: 'Browse Items', component:BrowsePage}
     ];
 
   }

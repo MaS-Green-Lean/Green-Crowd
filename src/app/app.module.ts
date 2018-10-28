@@ -11,6 +11,7 @@ import { CamelCaseConvert } from '../pipe/camel-case.pipe';
 import { PenaltyPage } from '../pages/penalty/penalty';
 import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
 import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
+import { BrowsePage } from '../pages/browse/browse';
 
 
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
@@ -20,6 +21,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StoreService } from '../services/store.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     CamelCaseConvert,
     PenaltyPage,
     ShoppingChecklistPage,
-    UploadReceiptPage
+    UploadReceiptPage,
+    BrowsePage
   ],
   imports: [
     BrowserModule,
@@ -51,13 +54,15 @@ import { HttpClientModule } from '@angular/common/http';
     StoreDetailPage,
     PenaltyPage,
     ShoppingChecklistPage,
-    UploadReceiptPage
+    UploadReceiptPage,
+    BrowsePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     StoreService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Camera
   ]
 })
 export class AppModule {}
