@@ -2,9 +2,10 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import dotEnv from 'dotenv'
 import mongoose from 'mongoose'
-import Store from './models/store'
-import Produce from './models/store'
+import './models/store'
+import  './models/produce'
 import api from './routes'
+var cors = require('cors')
 const PORT = process.env.PORT || 3001
 
 dotEnv.config()
@@ -14,6 +15,7 @@ mongoose.connect(process.env.MONGO_URL, { useCreateIndex: true, useNewUrlParser:
 
 const db = mongoose.connection
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use('/api', api)
 db.on('error', console.error.bind(console, 'connection error:'))

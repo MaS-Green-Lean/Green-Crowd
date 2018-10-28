@@ -1,4 +1,5 @@
 const Store = require('mongoose').model('Store')
+const Produce = require('mongoose').model('Produce')
 
 module.exports.create = (req, res, next) => {
   if (!req.body.name) {
@@ -17,6 +18,34 @@ module.exports.create = (req, res, next) => {
     address: req.body.address
   }, (err, result) => {
     if (err) {
+      res.status(500).json('error: ' + err)
+      return next()
+    } else {
+      res.status(200).json(result)
+      return next()
+    }
+  })
+}
+
+module.exports.get = (req, res, next) => {
+  if (!req.params.id) {
+    return next(new Error('store id is required'))
+  }
+  Store.findById(req.params.id)
+    .populate({path: 'produce', model: 'Produce'})
+    .exec((err, store) => {
+      if (err) {
+        return next(new Error('error occured: ' + err))
+      } else if (store) {
+        res.status(200).json(store)
+        return next()
+      }
+    })
+}
+
+module.exports.getAll = (req, res, next) => {
+  Store.find({}, (err, stores) => {
+    if (err) {
       res.locals.error = {
         status: 500,
         msg: 'error: ' + err
@@ -24,28 +53,45 @@ module.exports.create = (req, res, next) => {
       return next()
     } else {
       res.locals.data = {
-        store: result,
-        msg: 'Store successfully created'
+        stores: stores
       }
       return next()
     }
   })
 }
 
-module.exports.get = (req, res, next) => {
-  console.log(req.params.id)
+module.exports.update = (req, res, next) => {
+  if (!req.body.name && !req.body.address && !req.body.description) {
+    return next(new Error('You must include parameter(s) you would like to update'))
+  }
   if (!req.params.id) {
-    return next(new Error('store id is required'))
+    return next(new Error('Store id is required to update'))
   }
   Store.findById(req.params.id).exec((err, store) => {
     if (err) {
       return next(new Error('error occured: ' + err))
     } else if (store) {
-      console.log(store)
-      res.locals.data = {
-        store: store
+      if (req.body.name) {
+        store.name = req.body.name
       }
-      return next()
+      if (req.body.description) {
+        store.description = req.body.description
+      }
+      if (req.body.address) {
+        store.address = req.body.address
+      }
+      store.save((err, updated) => {
+        if (err) {
+          res.locals.error = {
+            status: 500,
+            msg: 'Unable to save changes to db'
+          }
+        }
+        res.locals.data = {
+          store: updated,
+        }
+        return next()
+      })
     }
   })
 }

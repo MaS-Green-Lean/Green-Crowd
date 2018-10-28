@@ -31,10 +31,10 @@
         <!-- <ion-row> -->
         <ion-item>
         <ion-row>
-            CO2-Emissions (kg per kg food): {{item.kiloCarbon}}
-            <img class="icon" *ngIf="item.kiloCarbon < 0.4" src="assets/imgs/low.png"/>
-            <img class="icon" *ngIf="item.kiloCarbon >= 0.4 && item.kiloCarbon < 1" src="assets/imgs/med.png"/>
-            <img  class="icon" *ngIf="item.kiloCarbon >= 1" src="assets/imgs/high.png"/>
+            CO2-Emissions (kg per kg food): {{item.carbon}}
+            <img class="icon" *ngIf="item.carbon < 0.4" src="assets/imgs/low.png"/>
+            <img class="icon" *ngIf="item.carbon >= 0.4 && item.carbon < 1" src="assets/imgs/med.png"/>
+            <img  class="icon" *ngIf="item.carbon >= 1" src="assets/imgs/high.png"/>
         </ion-row>
          </ion-item>
       </ion-list>

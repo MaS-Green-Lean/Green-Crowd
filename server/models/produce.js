@@ -13,6 +13,10 @@ var ProduceSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true
+  },
+  carbon: {
+    type: Number,
+    required: true
   }
 })
 

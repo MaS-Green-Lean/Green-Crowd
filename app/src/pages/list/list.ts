@@ -1,27 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Produce } from '../../model/produce';
+import { Store } from '../../model/store';
 import { ItemDetailPage } from '../item-detail/item-detail';
+import { StoreService } from '../../services/store.service';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html'
 })
-export class ListPage {
-  private items = [
-    new Produce('GalaApple', 1.99, 0.28),
-    new Produce('Zucchini', 2.19, 0.21),
-    new Produce('BoscPear', 1.19, 0.31),
-    new Produce('Cucumber', 0.89, 2.1),
-    new Produce('ButternutSquash', 1.19, 0.25),
-    new Produce('Pumpkin', 1.19, 0.44),
-    new Produce('Peach', 3.29, 0.49),
-    new Produce('Orange', 1.89, 0.35)
-  ];
-  private allItems = this.items;
+export class ListPage implements OnInit {
+  produce: Produce[];
+  allItems: Store;
+  itemsObservable: Subscription;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storeServive: StoreService) {
     // If we navigated to this page, we will have an item available as a nav param
+  }
+
+  ngOnInit() {
+    this.itemsObservable = this.storeServive.getStoreById('5bd20f3f6b80b60edf6f4dbc').subscribe((stores: Store) => {
+      this.allItems = stores;
+      this.produce = this.allItems.produce
+    })
   }
 
   itemTapped(event, item) {
@@ -32,10 +35,10 @@ export class ListPage {
   }
 
   private searchItems(searchbar) {
-    this.items = this.allItems
+    this.produce = this.allItems.produce
     var query = searchbar.srcElement.value;
     if(!query) {return;}
-    this.items = this.items.filter((item) => {
+    this.produce = this.produce.filter((item) => {
     if(item.name && query) {
       if (item.name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
         return true;
@@ -45,7 +48,7 @@ export class ListPage {
   });
   }
 
-  private cancelSearch(searchbar) {
-    this.items = this.allItems;
-  }
+  // private cancelSearch(searchbar) {
+  //   this.produce = this.allItems;
+  // }
 }
