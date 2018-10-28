@@ -18,7 +18,7 @@ import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = ListPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -27,10 +27,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'List', component: ListPage },
       { title: 'Shopping Checklist', component: ShoppingChecklistPage },
       { title: 'Upload Receipt', component: UploadReceiptPage },
-      { title: 'List', component: ListPage },
       { title: 'Map', component: MapPage },
       { title: 'Reward', component:RewardPage },
       { title: 'Penalty', component:PenaltyPage }
