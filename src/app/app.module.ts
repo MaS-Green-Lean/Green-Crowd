@@ -8,7 +8,9 @@ import { ListPage } from '../pages/list/list';
 import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
 import { CamelCaseConvert } from '../pipe/camel-case.pipe';
-import { PenaltyPage } from '../pages/penalty/penalty'
+import { PenaltyPage } from '../pages/penalty/penalty';
+import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
+import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
 
 
 import { ItemDetailPage } from '../pages/item-detail/item-detail';
@@ -29,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     ItemDetailPage,
     StoreDetailPage,
     CamelCaseConvert,
-    PenaltyPage
+    PenaltyPage,
+    ShoppingChecklistPage,
+    UploadReceiptPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { HttpClientModule } from '@angular/common/http';
     RewardPage,
     ItemDetailPage,
     StoreDetailPage,
-    PenaltyPage
+    PenaltyPage,
+    ShoppingChecklistPage,
+    UploadReceiptPage
   ],
   providers: [
     StatusBar,

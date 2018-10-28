@@ -10,10 +10,10 @@ export class StoreService {
     constructor(private http: HttpClient) { }
 
     getStoreById(id: string) {
-        return this.http.get('http://localhost:3001/api/store/' + id);
+        return this.http.get('https://green-lean.herokuapp.com/api/store/' + id);
     }
 
     getAllStores() {
-        return this.http.get('http://localhost/api/stores');
+        return this.http.get('https://green-lean.herokuapp.com/api/stores');
     }
 }
