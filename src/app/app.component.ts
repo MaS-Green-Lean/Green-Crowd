@@ -19,7 +19,7 @@ import { BrowsePage } from '../pages/browse/browse';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = ListPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -28,10 +28,16 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'List', component: ListPage },
       { title: 'Shopping Checklist', component: ShoppingChecklistPage },
       { title: 'Upload Receipt', component: UploadReceiptPage },
+<<<<<<< HEAD
       { title: 'Browse Items', component:BrowsePage}
+=======
+      { title: 'Map', component: MapPage },
+      { title: 'Reward', component:RewardPage },
+      { title: 'Penalty', component:PenaltyPage }
+>>>>>>> 340c22d9f641559a3cf619e58e6b825dc9b4c6de
     ];
 
   }
