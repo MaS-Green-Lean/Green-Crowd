@@ -7,14 +7,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-searchbar
-  [(ngModel)]="myInput"
-  [showCancelButton]="shouldShowCancel"
-  (ionInput)="searchItems($event)"
-  (ionCancel)="cancelSearch($event)">
-</ion-searchbar>
-
 <ion-content>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="searchItems($event)"
+    (ionCancel)="cancelSearch($event)">
+  </ion-searchbar>
   <ion-list>
     <ion-card *ngFor="let item of produce" (click)="itemTapped($event, item)">
       <div >

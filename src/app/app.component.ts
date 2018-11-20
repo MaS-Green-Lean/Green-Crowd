@@ -3,11 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
-import { ItemDetailPage } from '../pages/item-detail/item-detail';
 import { PenaltyPage } from '../pages/penalty/penalty';
 import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
 import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
@@ -31,7 +28,7 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Shopping Checklist', component: ShoppingChecklistPage },
       { title: 'Upload Receipt', component: UploadReceiptPage },
-      { title: 'Browse Items', component:BrowsePage}
+      { title: 'Browse Stores', component:BrowsePage}
     ];
 
   }

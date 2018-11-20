@@ -3,9 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
 import { CamelCaseConvert } from '../pipe/camel-case.pipe';
 import { PenaltyPage } from '../pages/penalty/penalty';
@@ -22,13 +20,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StoreService } from '../services/store.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
-    MapPage,
     RewardPage,
     ItemDetailPage,
     StoreDetailPage,
@@ -46,9 +43,7 @@ import { Camera } from '@ionic-native/camera';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
-    MapPage,
     RewardPage,
     ItemDetailPage,
     StoreDetailPage,
@@ -62,7 +57,8 @@ import { Camera } from '@ionic-native/camera';
     SplashScreen,
     StoreService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    Geolocation
   ]
 })
 export class AppModule {}

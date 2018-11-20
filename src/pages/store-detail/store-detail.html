@@ -7,38 +7,37 @@
 <ion-header>
 
     <ion-navbar>
-      <ion-title>store-detail</ion-title>
+      <ion-title>{{store?.name}} Details</ion-title>
     </ion-navbar>
   
   </ion-header>
   
   
   <ion-content>
-      <ion-card>
-        <ion-row>
-          <ion-col col-1></ion-col>
-          <ion-col col-10>
-            <img src="assets/imgs/{{item.name}}.jpg"/>
-          </ion-col>
-          <ion-col col-1></ion-col>
-        </ion-row>
-      <ion-card-content>
-        <ion-card-title>
-          {{item.name | camelCaseConvert}}
-        </ion-card-title>
-        <ion-list>
-          <ion-item>Lowest Price: ${{item.price}}/lb</ion-item>
-          <!-- <ion-row> -->
-          <ion-item>
-          <ion-row>
-              CO2-Emissions (kg per kg food): {{item.carbon}}
-              <img class="icon" *ngIf="item.carbon < 0.4" src="assets/imgs/low.png"/>
-              <img class="icon" *ngIf="item.carbon >= 0.4 && item.carbon < 1" src="assets/imgs/med.png"/>
-              <img  class="icon" *ngIf="item.carbon >= 1" src="assets/imgs/high.png"/>
-          </ion-row>
-           </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  
+     <ion-card>
+        <div id="map">
+        </div>
+        <h1>
+          {{store?.name}} <br />
+          {{store?.address}}
+        </h1>
+       {{store?.description}} <br />
+       Should probably include hours but do we want to track those?
+     </ion-card>
+     <ion-title>Produce</ion-title> 
+     <ion-list>
+        <ion-card *ngFor="let item of store?.produce" (click)="itemTapped($event, item)">
+          <div >
+            <img height="100%" src="assets/imgs/{{item.name}}.jpg"/>
+          </div>
+          <div class="container">
+            <ion-card-title>
+              {{item.name | camelCaseConvert }}
+            </ion-card-title>
+            <p>
+              Price: ${{item.price}}/lb
+            </p>
+          </div>
+        </ion-card>
+      </ion-list>
   </ion-content>
