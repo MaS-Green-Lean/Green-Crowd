@@ -7,25 +7,24 @@
   </ion-navbar>
 </ion-header>
 
-<ion-searchbar
-  [(ngModel)]="myInput"
-  [showCancelButton]="shouldShowCancel"
-  (ionInput)="searchItems($event)"
-  (ionCancel)="cancelSearch($event)">
-</ion-searchbar>
-
 <ion-content>
+  <ion-searchbar
+    [(ngModel)]="myInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="searchItems($event)"
+    (ionCancel)="cancelSearch($event)">
+  </ion-searchbar>
   <ion-list>
     <ion-card *ngFor="let item of produce" (click)="itemTapped($event, item)">
       <div >
-        <img height="100%" src="assets/imgs/{{item.name}}.jpg"/>
+        <img height="100%" src="assets/imgs/{{item._id}}.jpg"/>
       </div>
       <div class="container">
         <ion-card-title>
-            {{item.name | camelCaseConvert }}
+            {{item._id | camelCaseConvert }}
         </ion-card-title>
         <p>
-            Lowest Price: ${{item.price}}/lb
+            Lowest Price: ${{item.min}}/lb
         </p>
       </div>
     </ion-card>

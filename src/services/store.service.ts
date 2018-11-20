@@ -16,4 +16,8 @@ export class StoreService {
     getAllStores() {
         return this.http.get('https://green-lean.herokuapp.com/api/stores');
     }
+
+    getLowestPrice() {
+        return this.http.get('https://green-lean.herokuapp.com/api/produce');
+    }
 }

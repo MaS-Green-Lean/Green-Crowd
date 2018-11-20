@@ -13,17 +13,17 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class ListPage implements OnInit {
   produce: Produce[];
-  allItems: Store;
   itemsObservable: Subscription;
+  searchProduce: Produce[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storeServive: StoreService) {
     // If we navigated to this page, we will have an item available as a nav param
   }
 
   ngOnInit() {
-    this.itemsObservable = this.storeServive.getStoreById('5bd20f3f6b80b60edf6f4dbc').subscribe((stores: Store) => {
-      this.allItems = stores;
-      this.produce = this.allItems.produce
+    this.itemsObservable = this.storeServive.getLowestPrice().subscribe((produce: Produce[]) => {
+      this.searchProduce = produce;
+      this.produce = produce
     })
   }
 
@@ -34,10 +34,10 @@ export class ListPage implements OnInit {
   }
 
   private searchItems(searchbar) {
-    this.produce = this.allItems.produce
+    this.searchProduce = this.produce
     var query = searchbar.srcElement.value;
     if(!query) {return;}
-    this.produce = this.produce.filter((item) => {
+    this.searchProduce = this.produce.filter((item) => {
     if(item.name && query) {
       if (item.name.toLowerCase().indexOf(query.toLowerCase()) > -1) {
         return true;
@@ -48,6 +48,6 @@ export class ListPage implements OnInit {
   }
 
   private cancelSearch(searchbar) {
-    this.produce = this.allItems.produce;
+    this.searchProduce = this.produce;
   }
 }
