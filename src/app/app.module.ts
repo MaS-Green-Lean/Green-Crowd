@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
@@ -21,6 +22,8 @@ import { StoreService } from '../services/store.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
+import { LoginPage } from '../pages/login/login';
+import { AuthService } from '../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -33,12 +36,14 @@ import { Geolocation } from '@ionic-native/geolocation';
     PenaltyPage,
     ShoppingChecklistPage,
     UploadReceiptPage,
-    BrowsePage
+    BrowsePage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -50,7 +55,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     PenaltyPage,
     ShoppingChecklistPage,
     UploadReceiptPage,
-    BrowsePage
+    BrowsePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
@@ -58,6 +64,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     StoreService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
+    AuthService,
     Geolocation
   ]
 })

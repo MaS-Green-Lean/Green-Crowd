@@ -4,11 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { ListPage } from '../pages/list/list';
+import { LoginPage } from '../pages/login/login';
 import { RewardPage } from '../pages/reward/reward';
 import { PenaltyPage } from '../pages/penalty/penalty';
 import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
 import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
 import { BrowsePage } from '../pages/browse/browse';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,11 +26,13 @@ export class MyApp {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
+    // check for user type here
     this.pages = [
       { title: 'List', component: ListPage },
       { title: 'Shopping Checklist', component: ShoppingChecklistPage },
       { title: 'Upload Receipt', component: UploadReceiptPage },
-      { title: 'Browse Stores', component:BrowsePage}
+      { title: 'Browse Stores', component: BrowsePage },
+      { title: 'Login', component: LoginPage }
     ];
 
   }
