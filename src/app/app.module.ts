@@ -22,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StoreService } from '../services/store.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera } from '@ionic-native/camera';
+import { ReceiptServiceProvider } from '../providers/receipt-service/receipt-service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { Camera } from '@ionic-native/camera';
     SplashScreen,
     StoreService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    ReceiptServiceProvider
   ]
 })
 export class AppModule {}
