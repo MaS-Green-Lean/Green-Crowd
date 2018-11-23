@@ -8,5 +8,11 @@ export class AuthService {
 
     login(email: string, password: string): Observable<any> {
         return this.http.post('http://localhost:3001/api/login', { email: email, password: password })
+            .do(user => this.setToken(user))
+            .shareReplay();
+    }
+
+    setToken(user) {
+        localStorage.setItem('jwt', user.token)
     }
 }

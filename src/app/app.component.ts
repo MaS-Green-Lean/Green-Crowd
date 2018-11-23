@@ -10,7 +10,6 @@ import { PenaltyPage } from '../pages/penalty/penalty';
 import { ShoppingChecklistPage } from '../pages/shopping-checklist/shopping-checklist';
 import { UploadReceiptPage } from '../pages/upload-receipt/upload-receipt';
 import { BrowsePage } from '../pages/browse/browse';
-import { AuthGuardService } from '../services/auth-guard.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +17,7 @@ import { AuthGuardService } from '../services/auth-guard.service';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ListPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
