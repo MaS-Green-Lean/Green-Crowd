@@ -24,6 +24,7 @@ import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../services/auth.service';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AuthService } from '../services/auth.service';
     ShoppingChecklistPage,
     UploadReceiptPage,
     BrowsePage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { AuthService } from '../services/auth.service';
     ShoppingChecklistPage,
     UploadReceiptPage,
     BrowsePage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

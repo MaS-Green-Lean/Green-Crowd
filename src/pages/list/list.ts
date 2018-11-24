@@ -4,8 +4,8 @@ import { Produce } from '../../model/produce';
 import { Store } from '../../model/store';
 import { ItemDetailPage } from '../item-detail/item-detail';
 import { StoreService } from '../../services/store.service';
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'page-list',
@@ -16,8 +16,15 @@ export class ListPage implements OnInit {
   allItems: Store;
   itemsObservable: Subscription;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storeServive: StoreService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storeServive: StoreService, private authService: AuthService) {
     // If we navigated to this page, we will have an item available as a nav param
+  }
+
+  ionViewCanEnter(): boolean {
+    if (this.authService.user) {
+      return true;
+    }
+    return false;
   }
 
   ngOnInit() {

@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { NavController, NavParams } from "ionic-angular";
+import { NavController, NavParams, ToastController } from "ionic-angular";
 import { AuthService } from "../../services/auth.service";
+import { ListPage } from "../list/list";
+import { RegisterPage } from "../register/register";
 
 
 @Component({
@@ -11,7 +13,7 @@ import { AuthService } from "../../services/auth.service";
 export class LoginPage {
     loginForm: FormGroup;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private authService: AuthService) {
+    constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private authService: AuthService, private toastCtrl: ToastController) {
         this.loginForm = this.formBuilder.group({
             email: [
                 '',
@@ -28,10 +30,22 @@ export class LoginPage {
 
     signIn() {
         if (this.loginForm.valid) {
-            console.log(this.loginForm.value)
             this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(user => {
-                console.log(user)
+                if (user) {
+                    this.navCtrl.push(ListPage).then(() => {
+                        this.navCtrl.remove(0);
+                    })
+                } else {
+                    this.toastCtrl.create({
+                        message: 'Error logging you in.',
+                        duration: 2000
+                    }).present();
+                }
             })
         }
+    }
+
+    register() {
+        this.navCtrl.push(RegisterPage)
     }
 }
