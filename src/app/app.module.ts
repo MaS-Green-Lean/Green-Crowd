@@ -21,6 +21,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StoreService } from '../services/store.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
 import { ReceiptServiceProvider } from '../providers/receipt-service/receipt-service';
 
