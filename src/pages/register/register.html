@@ -1,0 +1,39 @@
+<ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h4>Registration Form</h4>
+        </div>
+        <form [formGroup]="registerForm">
+          <ion-item>
+              <ion-label floating>First Name</ion-label>
+              <ion-input formControlName="firstName" type="name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Last Name</ion-label>
+              <ion-input formControlName="lastName" type="name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Confirm Password</ion-label>
+              <ion-input type="password" formControlName="confirmPassword"></ion-input>
+          </ion-item>
+  
+        <div padding>
+          <button ion-button full block type="submit" (click)="register()" [disabled]="!registerForm.valid">Register</button>
+        </div>
+      </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
