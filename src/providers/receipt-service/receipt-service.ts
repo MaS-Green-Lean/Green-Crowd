@@ -12,7 +12,7 @@ export class ReceiptServiceProvider {
   private postAPIUrl = 'https://api.taggun.io/api/receipt/v1/verbose/file'
 
   public headers = new HttpHeaders({
-      apikey: '1a5725a0f05711e8ac04312517c48982'
+      apikey: '6cdb2770be9011e8b187f3e9d1401099'
     });
 
   constructor(public http: HttpClient) {

@@ -74,7 +74,6 @@ export class UploadReceiptPage {
   uploadPicture(image: string) {
     this.receiptProvider.postReceiptData(image).then((result) => {
       this.response = result['lineAmounts'];
-      //console.log(JSON.stringify(this.response))
       this.parseJSON();
     }, (err) => {
       console.log(err);
@@ -82,7 +81,6 @@ export class UploadReceiptPage {
   }
 
   parseJSON() {
-    console.log("anything")
     for (let i = 0; i < this.response.length ; i++) {
       var description = this.response[i]['description'].split(this.response[i]['data'])
       let item = {title: description[0].trim(), cost: this.response[i]['data']};

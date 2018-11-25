@@ -24,7 +24,7 @@
           <ion-col col-8>Item</ion-col>
           <ion-col col-4>Cost</ion-col>
         </ion-row>
-        <ion-row *ngFor="let item of receiptItems">
+        <ion-row *ngFor="let item of lineItems">
           <ion-col col-8><ion-input type="text" [(ngModel)]="item.title"></ion-input></ion-col>
           <ion-col col-4>{{item.cost}}</ion-col>
         </ion-row>
