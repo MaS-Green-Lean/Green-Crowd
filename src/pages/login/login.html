@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center>
+        <h4>Login Form</h4>
+      </div>
+      <form [formGroup]="loginForm">
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input formControlName="email" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+      <div padding>
+        <button ion-button full block (click)="signIn()" type="submit" [disabled]="!loginForm.valid">Login</button>
+      </div>
+    </form>
+    <div padding>
+      <button ion-button full block (click)="register()">Create Account</button>
+    </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

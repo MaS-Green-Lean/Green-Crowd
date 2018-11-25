@@ -3,17 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Browse Item by Location</ion-title>
+    <ion-title>Browse Stores</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
   <h2 style="font: bold">Store Search Map</h2>
-  <h2>Enter item to search for:</h2>
-  <div id="store_search_box">
-      <ion-input  id="item_search_box" type="string" [(ngModel)]="item" text-left id="input" ></ion-input>
-      <button id="get_prices_button" (click)="onSearchButtonClick($event)" >Get Prices</button>
+  <div id="map_canvas">
+    <ion-searchbar
+      [(ngModel)]="myInput"
+      [showCancelButton]="shouldShowCancel"
+      (ionInput)="searchItems($event)"
+      (ionCancel)="cancelSearch($event)">
+    </ion-searchbar>
   </div>
-  <div id="map_canvas"></div>
+  <button *ngIf="storeSelected" (click)='openStore(storeSelected)' ion-button block outline>View Store Page</button>
 </ion-content>

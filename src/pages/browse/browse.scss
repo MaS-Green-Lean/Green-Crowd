@@ -1,18 +1,11 @@
 page-browse {
-    #store_search_box {
-        border:  1px solid black;
-      }
-    
-      #get_prices_button {
-        width:100%;
-        height: 30px;
-        position: relative;
-        left: 0px;
-        background-color: grey;
-        font-size: 200%;
-      }
-    
-      #map_canvas {
-        height:75%;
-      }
+  #map_canvas {
+    height:75%;
+  }
+
+  ion-searchbar {
+    width: 75%;
+    margin: auto;
+    padding-top: 20px;
+  }
 }

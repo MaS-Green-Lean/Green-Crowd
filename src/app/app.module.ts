@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { MapPage } from '../pages/map/map';
 import { RewardPage } from '../pages/reward/reward';
 import { CamelCaseConvert } from '../pipe/camel-case.pipe';
 import { PenaltyPage } from '../pages/penalty/penalty';
@@ -21,14 +20,18 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StoreService } from '../services/store.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
+import { ReceiptServiceProvider } from '../services/receipt-service';
+import { Geolocation } from '@ionic-native/geolocation';
+import { LoginPage } from '../pages/login/login';
+import { AuthService } from '../services/auth.service';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     ListPage,
-    MapPage,
     RewardPage,
     ItemDetailPage,
     StoreDetailPage,
@@ -36,33 +39,39 @@ import { Camera } from '@ionic-native/camera';
     PenaltyPage,
     ShoppingChecklistPage,
     UploadReceiptPage,
-    BrowsePage
+    BrowsePage,
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     ListPage,
-    MapPage,
     RewardPage,
     ItemDetailPage,
     StoreDetailPage,
     PenaltyPage,
     ShoppingChecklistPage,
     UploadReceiptPage,
-    BrowsePage
+    BrowsePage,
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     StoreService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    ReceiptServiceProvider,
+    AuthService,
+    Geolocation
   ]
 })
 export class AppModule {}
