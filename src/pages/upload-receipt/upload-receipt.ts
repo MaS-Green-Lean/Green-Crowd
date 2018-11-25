@@ -13,6 +13,7 @@ export class UploadReceiptPage {
   response: any;
 
   public receiptItems;
+  public lineItems = [];
 
   constructor(public navCtrl: NavController, private camera: Camera, private actionSheetCtrl: ActionSheetController, public receiptProvider: ReceiptServiceProvider) {
   }
@@ -72,10 +73,21 @@ export class UploadReceiptPage {
 
   uploadPicture(image: string) {
     this.receiptProvider.postReceiptData(image).then((result) => {
-      this.response = result;
-      console.log(JSON.stringify(result['text']))
+      this.response = result['lineAmounts'];
+      //console.log(JSON.stringify(this.response))
+      this.parseJSON();
     }, (err) => {
       console.log(err);
     });
+  }
+
+  parseJSON() {
+    console.log("anything")
+    for (let i = 0; i < this.response.length ; i++) {
+      var description = this.response[i]['description'].split(this.response[i]['data'])
+      let item = {title: description[0].trim(), cost: this.response[i]['data']};
+      this.lineItems.push(item);
+    }
+    console.log(JSON.stringify(this.lineItems))
   }
 }

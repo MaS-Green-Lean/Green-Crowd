@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HTTP } from '@ionic-native/http';
 import { Injectable } from '@angular/core';
 
 /*
@@ -11,15 +10,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ReceiptServiceProvider {
   private postAPIUrl = 'https://api.taggun.io/api/receipt/v1/verbose/file'
-  // private postAPIUrl = 'https://api.tabscanner.com/YHFGIucsBOWzf5RGezEGaQvUR3EegIoFtrIiPb447aeBbEUL3EJRqIcaCCvGnx7v/process/'
 
   public headers = new HttpHeaders({
       apikey: '1a5725a0f05711e8ac04312517c48982'
     });
-  // public headers = new HttpHeaders({
-  //     'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
-  //     'cache-control': 'no-cache'
-  //   });
 
   constructor(public http: HttpClient) {
     console.log('Hello ReceiptServiceProvider Provider');
@@ -29,13 +23,9 @@ export class ReceiptServiceProvider {
     var blob = this.convertBase64ToBlob(fileData);
     var formData = new FormData()
     formData.append('file', blob)
-    // let formData = JSON.stringify({ file_contents:
-    //   { value: blob,
-    //     options:
-    //      { filename: 'receipt.jpg',
-    //        contentType: null } } });
     return new Promise((resolve, reject) => {
       this.http.post(this.postAPIUrl, formData, {headers:this.headers }).subscribe(res => {
+        //console.log(JSON.stringify(res));
         resolve(res);
       }, (err) => {
         reject(err);
