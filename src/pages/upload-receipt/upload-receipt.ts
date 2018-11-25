@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 import { Camera, PictureSourceType } from '@ionic-native/camera';
+import { ReceiptServiceProvider } from '../../services/receipt-service';
 
 @Component({
   selector: 'page-upload-receipt',
@@ -9,14 +10,16 @@ import { Camera, PictureSourceType } from '@ionic-native/camera';
 export class UploadReceiptPage {
   selectedImage: string;
   processingMsg: string;
-  
+  response: any;
+
   public receiptItems;
-  
-  constructor(public navCtrl: NavController, private camera: Camera, private actionSheetCtrl: ActionSheetController) {
+  public lineItems = [];
+
+  constructor(public navCtrl: NavController, private camera: Camera, private actionSheetCtrl: ActionSheetController, public receiptProvider: ReceiptServiceProvider) {
   }
 
   ionViewDidLoad(){
- 
+
     this.receiptItems = [
       { title: 'Clementines', cost: 4.99  },
       { title: 'Graeters Ice Cream', cost: 5.49 },
@@ -28,7 +31,7 @@ export class UploadReceiptPage {
       { title: 'HoneyCrisp Apples', cost:2.71 },
       { title: 'Green Beans', cost: 1.69}
     ];
- 
+
   }
 
   selectSource() {
@@ -62,8 +65,27 @@ export class UploadReceiptPage {
       saveToPhotoAlbum: false,
       correctOrientation: true
     }).then((imageData) => {
-      this.selectedImage = `data:image/jpeg;base64,${imageData}`;
-      this.processingMsg = "Image Processed and uploaded"
+      this.selectedImage = `data:image/jpg;base64,${imageData}`;
+      this.processingMsg = "Image Processed";
+      this.uploadPicture(this.selectedImage);
     })
+  }
+
+  uploadPicture(image: string) {
+    this.receiptProvider.postReceiptData(image).then((result) => {
+      this.response = result['lineAmounts'];
+      this.parseJSON();
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
+  parseJSON() {
+    for (let i = 0; i < this.response.length ; i++) {
+      var description = this.response[i]['description'].split(this.response[i]['data'])
+      let item = {title: description[0].trim(), cost: this.response[i]['data']};
+      this.lineItems.push(item);
+    }
+    console.log(JSON.stringify(this.lineItems))
   }
 }
