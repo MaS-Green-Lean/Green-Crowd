@@ -28,16 +28,23 @@ export class StoreDetailPage {
   map: GoogleMap
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storeSerivce: StoreService, private authService: AuthService) {
+  }
+
+  ngOnInit() {
     this.id = this.navParams.get('storeId');
     if (!this.id) {
-      if (this.authService.user.value.role === 'Manager') {
-        this.id = this.authService.user.value.storeManaged;
-      } // else break
+      this.authService.user.subscribe((user: any) => {
+        if (user && this.authService.user.value.role === 'Manager') {
+          this.id = this.authService.user.value.storeManaged;
+          this.getStore();
+        } // else break
+      });
+    } else {
+      this.getStore();
     }
   }
 
   loadMap() {
-    console.log(this.store.location.coordinates)
     this.map = GoogleMaps.create('map', {
       camera: {
         target: {
@@ -62,7 +69,7 @@ export class StoreDetailPage {
     })
   }
 
-  ionViewDidLoad() {
+  getStore() {
     this.store$ = this.storeSerivce.getStoreById(this.id).subscribe((store: Store) => {
       this.store = store
     }, err => {

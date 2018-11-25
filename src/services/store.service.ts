@@ -12,6 +12,7 @@ export class StoreService {
 
     getStoreById(id: string) {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
+        console.log(headers)
         return this.http.get<Store>('https://green-lean.herokuapp.com/api/store/' + id, { headers: headers });
     }
 

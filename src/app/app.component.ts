@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -34,7 +34,6 @@ export class MyApp {
     this.authSub$ = this.authService.user.subscribe((user) => {
       if (user && user.role === 'Shopper') {
         this.rootPage = ListPage;
-        console.log(this.rootPage)
         this.pages = [
           { title: 'List', component: ListPage },
           { title: 'Shopping Checklist', component: ShoppingChecklistPage },
@@ -66,6 +65,12 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    this.nav.push(LoginPage).then(() => {
+      this.authService.logout();
+    })
   }
 
   ngOnDestroy() {

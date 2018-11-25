@@ -17,7 +17,7 @@ export class AuthService {
         if (this.token) {
             const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
             headers.append('Authorization', this.token);
-            this.http.get('http://localhost:3001/api/user', { headers: headers }).subscribe((user: any) => {
+            this.http.get('https://green-lean.herokuapp.com/api/user', { headers: headers }).subscribe((user: any) => {
                 if (user) {
                     this.user.next(user.user);
                 } else {
@@ -29,7 +29,7 @@ export class AuthService {
     }
 
     register(user) {
-        return this.http.post('http://localhost:3001/api/register', user).pipe(map((user: any) => user.user))
+        return this.http.post('https://green-lean.herokuapp.com/api/register', user).pipe(map((user: any) => user.user))
             .do((user: User) => {
                 this.setToken(user.token);
                 this.user.next(user);
@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     login(email: string, password: string): Observable<any> {
-        return this.http.post('http://localhost:3001/api/login', { email: email, password: password }).pipe(map((user : any) => user.user))
+        return this.http.post('https://green-lean.herokuapp.com/api/login', { email: email, password: password }).pipe(map((user : any) => user.user))
             .do((user: User) => {
                 this.setToken(user.token);
                 this.user.next(user);
@@ -53,6 +53,7 @@ export class AuthService {
     }
 
     setToken(token) {
-        localStorage.setItem('jwt', token)
+        localStorage.setItem('jwt', token);
+        this.token = token;
     }
 }

@@ -14,7 +14,7 @@ import { StoreDetailPage } from "../store-detail/store-detail";
 export class LoginPage {
     loginForm: FormGroup;
 
-    constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private authService: AuthService, private toastCtrl: ToastController, private viewCtrl: ViewController) {
+    constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private authService: AuthService, private toastCtrl: ToastController) {
         this.loginForm = this.formBuilder.group({
             email: [
                 '',
