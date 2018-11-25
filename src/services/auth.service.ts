@@ -18,8 +18,9 @@ export class AuthService {
             const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);
             headers.append('Authorization', this.token);
             this.http.get('http://localhost:3001/api/user', { headers: headers }).subscribe((user: any) => {
-                if (user) return this.user.next(user.user);
-                else {
+                if (user) {
+                    this.user.next(user.user);
+                } else {
                     this.user.next(undefined);
                     this.token = ''; // should handle and redirect to login
                 }

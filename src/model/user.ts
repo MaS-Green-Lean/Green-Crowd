@@ -4,4 +4,5 @@ export interface User {
   fullname: string;
   token: string;
   role: string;
+  storeManaged: string;
 }

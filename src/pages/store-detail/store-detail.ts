@@ -8,6 +8,7 @@ import {
   GoogleMap
 } from '@ionic-native/google-maps';
 import { ItemDetailPage } from '../item-detail/item-detail';
+import { AuthService } from '../../services/auth.service';
 
 /**
  * Generated class for the StoreDetailPage page.
@@ -26,8 +27,13 @@ export class StoreDetailPage {
   store$: Subscription
   map: GoogleMap
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storeSerivce: StoreService, public changeDetectorRef: ChangeDetectorRef) {
-    this.id = this.navParams.get("storeId");
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storeSerivce: StoreService, private authService: AuthService) {
+    this.id = this.navParams.get('storeId');
+    if (!this.id) {
+      if (this.authService.user.value.role === 'Manager') {
+        this.id = this.authService.user.value.storeManaged;
+      } // else break
+    }
   }
 
   loadMap() {

@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { NavController, NavParams, ToastController } from "ionic-angular";
+import { NavController, NavParams, ToastController, ViewController } from "ionic-angular";
 import { AuthService } from "../../services/auth.service";
 import { ListPage } from "../list/list";
 import { RegisterPage } from "../register/register";
+import { StoreDetailPage } from "../store-detail/store-detail";
 
 
 @Component({
@@ -13,7 +14,7 @@ import { RegisterPage } from "../register/register";
 export class LoginPage {
     loginForm: FormGroup;
 
-    constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private authService: AuthService, private toastCtrl: ToastController) {
+    constructor(public navCtrl: NavController, private formBuilder: FormBuilder, private authService: AuthService, private toastCtrl: ToastController, private viewCtrl: ViewController) {
         this.loginForm = this.formBuilder.group({
             email: [
                 '',
@@ -31,10 +32,10 @@ export class LoginPage {
     signIn() {
         if (this.loginForm.valid) {
             this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(user => {
-                if (user) {
-                    this.navCtrl.push(ListPage).then(() => {
-                        this.navCtrl.remove(0);
-                    })
+                if (user.role === 'Manager') {
+                    this.navCtrl.push(StoreDetailPage);
+                } else if (user.role === 'Shopper') {
+                    this.navCtrl.push(ListPage).catch(e => console.error(e))
                 } else {
                     this.toastCtrl.create({
                         message: 'Error logging you in.',

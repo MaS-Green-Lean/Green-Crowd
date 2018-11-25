@@ -4,6 +4,7 @@ import { NavController, ToastController } from "ionic-angular";
 import { AuthService } from "../../services/auth.service";
 import { PasswordValidation } from "../validators/password-validator";
 import { ListPage } from "../list/list";
+import { StoreDetailPage } from "../store-detail/store-detail";
 
 
 @Component({
@@ -50,9 +51,17 @@ export class RegisterPage {
                 password: this.registerForm.value.password
             }
             this.authService.register(user).subscribe((user) => {
-                if (user) {
-                    this.navCtrl.push(ListPage);
+                if (user.role === 'Manager') {
+                    this.navCtrl.push(StoreDetailPage);
                     this.navCtrl.remove(1);
+                } else if (user.role === 'Shopper') { // bad, this doesn't error handle
+                    this.navCtrl.push(ListPage).catch(e => console.error(e));
+                    this.navCtrl.remove(1);
+                } else {
+                    this.toastCtrl.create({
+                        message: 'Error registering you.',
+                        duration: 2000
+                    }).present();
                 }
             })
         }

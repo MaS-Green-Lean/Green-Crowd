@@ -21,7 +21,7 @@ export class ListPage implements OnInit {
   }
 
   ionViewCanEnter(): boolean {
-    if (this.authService.user) {
+    if (this.authService.user.value.role === 'Shopper') {
       return true;
     }
     return false;
@@ -34,7 +34,7 @@ export class ListPage implements OnInit {
     })
   }
 
-  itemTapped(event, item) {
+  itemTapped(_, item) {
     this.navCtrl.push(ItemDetailPage, {
       item: item
     });
@@ -54,7 +54,7 @@ export class ListPage implements OnInit {
   });
   }
 
-  private cancelSearch(searchbar) {
+  private cancelSearch() {
     this.produce = this.allItems.produce;
   }
 }

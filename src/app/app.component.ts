@@ -32,8 +32,9 @@ export class MyApp {
 
   ngOnInit() {
     this.authSub$ = this.authService.user.subscribe((user) => {
-      this.rootPage = user ? ListPage : LoginPage;
       if (user && user.role === 'Shopper') {
+        this.rootPage = ListPage;
+        console.log(this.rootPage)
         this.pages = [
           { title: 'List', component: ListPage },
           { title: 'Shopping Checklist', component: ShoppingChecklistPage },
@@ -41,10 +42,14 @@ export class MyApp {
           { title: 'Browse Stores', component: BrowsePage }
         ];
       } else if (user && user.role === 'Manager') {
+        this.rootPage = StoreDetailPage;
         this.pages = [
           { title: 'Store',  component: StoreDetailPage } // you will need to have this page pull store from manager details
         ]
-      } else this.pages = null;
+      } else {
+        this.pages = null;
+        this.rootPage = LoginPage;
+      }
     })
   }
 
