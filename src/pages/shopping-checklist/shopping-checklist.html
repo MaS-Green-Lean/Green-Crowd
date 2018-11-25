@@ -7,12 +7,26 @@
   </ion-navbar>
 </ion-header>
 
+<ion-content>
+  <ion-item>
+      <ion-input [(ngModel)]="todo" placeholder="Additional Item" type="text"></ion-input>
+  </ion-item>
 
-<ion-content padding>
+  <button ion-button full (click)="add()" color="secondary">ADD</button>
+
   <ion-list>
-    <ion-item *ngFor="let item of items" (click)="viewItem(item)">
-      <ion-checkbox color="secondary"></ion-checkbox>
-      <ion-label>{{item.title}}</ion-label>
-    </ion-item>
+      <ion-item-sliding *ngFor="let t of todos">
+          <ion-item>
+              <ion-checkbox color="secondary"></ion-checkbox>
+              <ion-label>{{t}}</ion-label>
+          </ion-item>
+
+          <ion-item-options side="right">
+              <button ion-button color="danger" (click)="delete(t)">
+                  <ion-icon name="trash"></ion-icon> Delete
+              </button>
+          </ion-item-options>
+      </ion-item-sliding>
   </ion-list>
 </ion-content>
+

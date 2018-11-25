@@ -7,26 +7,27 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'shopping-checklist.html',
 })
 export class ShoppingChecklistPage {
+  todos: string[] = [];
+  todo: string;
 
-  public items;
- 
   constructor(public navCtrl: NavController) {
- 
+
   }
- 
-  ionViewDidLoad(){
- 
-    this.items = [
-      { title: 'Orange' },
-      { title: 'Pumpkin' },
-      { title: 'Butternut Squash' },
-      { title: 'Cucumber' },
-      { title: 'Bosc Pear'},
-      { title: 'Zucchini' },
-      { title: 'Gala Apple' },
-      { title: 'Peach' }
-    ];
- 
+
+  add() {
+      if (this.todo!=undefined 
+            && this.todo.length!=0 
+            && this.todo!="") {
+        this.todos.push(this.todo);
+        this.todo = "";
+      }
+  }
+
+  delete(item) {
+      var index = this.todos.indexOf(item, 0);
+      if (index > -1) {
+          this.todos.splice(index, 1);
+      }
   }
 
 }
