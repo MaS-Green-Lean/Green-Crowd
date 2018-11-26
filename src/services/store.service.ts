@@ -27,16 +27,16 @@ export class StoreService {
 
     deleteProducebyId(id) {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
-        return this.http.delete('http://localhost:3001/api/produce/' + id, { headers: headers });
+        return this.http.delete('https://green-lean.herokuapp.com/api/produce/' + id, { headers: headers });
     }
 
     updateProduceById(id, produce) {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
-        return this.http.patch('http://localhost:3001/api/produce/' + id, produce , { headers: headers });
+        return this.http.patch('https://green-lean.herokuapp.com/api/produce/' + id, produce , { headers: headers });
     }
 
     createProduce(storeId, produce) {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
-        return this.http.post('http://localhost:3001/api/store/' + storeId + '/produce', produce, { headers: headers });
+        return this.http.post('https://green-lean.herokuapp.com/api/store/' + storeId + '/produce', produce, { headers: headers });
     }
 }
