@@ -27,6 +27,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LoginPage } from '../pages/login/login';
 import { AuthService } from '../services/auth.service';
 import { RegisterPage } from '../pages/register/register';
+import { ItemFormPage } from '../pages/item-form/item-form';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegisterPage } from '../pages/register/register';
     UploadReceiptPage,
     BrowsePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ItemFormPage
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { RegisterPage } from '../pages/register/register';
     UploadReceiptPage,
     BrowsePage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ItemFormPage
   ],
   providers: [
     StatusBar,

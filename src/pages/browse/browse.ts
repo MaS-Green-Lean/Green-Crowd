@@ -15,7 +15,6 @@ import { Store } from '../../model/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Geolocation } from '@ionic-native/geolocation';
 import { StoreDetailPage } from '../store-detail/store-detail';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-browse',

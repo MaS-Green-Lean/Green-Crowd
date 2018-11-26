@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ListPage implements OnInit {
   produce: Produce[];
-  itemsObservable: Subscription;
+  itemsObservable$: Subscription;
   searchProduce: Produce[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storeServive: StoreService, private authService: AuthService) {
@@ -28,7 +28,11 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.itemsObservable = this.storeServive.getLowestPrice().subscribe((produce: Produce[]) => {
+    this.getStore();
+  }
+
+  getStore() {
+    this.itemsObservable$ = this.storeServive.getLowestPrice().subscribe((produce: Produce[]) => {
       this.searchProduce = produce;
       this.produce = produce
     })
@@ -56,5 +60,9 @@ export class ListPage implements OnInit {
 
   private cancelSearch(searchbar) {
     this.searchProduce = this.produce;
+  }
+
+  ngOnDestroy() {
+    this.itemsObservable$.unsubscribe();
   }
 }

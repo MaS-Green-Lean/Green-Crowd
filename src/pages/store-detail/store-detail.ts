@@ -1,5 +1,5 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 import { Store } from '../../model/store';
 import { Subscription } from 'rxjs/Subscription';
 import { StoreService } from '../../services/store.service';
@@ -9,6 +9,7 @@ import {
 } from '@ionic-native/google-maps';
 import { ItemDetailPage } from '../item-detail/item-detail';
 import { AuthService } from '../../services/auth.service';
+import { ItemFormPage } from '../item-form/item-form';
 
 /**
  * Generated class for the StoreDetailPage page.
@@ -81,7 +82,12 @@ export class StoreDetailPage {
 
   itemTapped(_, item) {
     this.navCtrl.push(ItemDetailPage, {
-      item: item
+      item: item,
+      parentPage: this
     });
+  }
+
+  addItem() {
+    this.navCtrl.push(ItemFormPage);
   }
 }

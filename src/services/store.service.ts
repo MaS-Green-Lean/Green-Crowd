@@ -12,7 +12,6 @@ export class StoreService {
 
     getStoreById(id: string) {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
-        console.log(headers)
         return this.http.get<Store>('https://green-lean.herokuapp.com/api/store/' + id, { headers: headers });
     }
 
@@ -24,5 +23,20 @@ export class StoreService {
     getLowestPrice() {
         const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
         return this.http.get('https://green-lean.herokuapp.com/api/produce', { headers: headers });
+    }
+
+    deleteProducebyId(id) {
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
+        return this.http.delete('http://localhost:3001/api/produce/' + id, { headers: headers });
+    }
+
+    updateProduceById(id, produce) {
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
+        return this.http.patch('http://localhost:3001/api/produce/' + id, produce , { headers: headers });
+    }
+
+    createProduce(storeId, produce) {
+        const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.authService.token);
+        return this.http.post('http://localhost:3001/api/store/' + storeId + '/produce', produce, { headers: headers });
     }
 }

@@ -1,0 +1,32 @@
+<ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h4>Edit Produce</h4>
+        </div>
+        <form [formGroup]="produceForm">
+          <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input formControlName="name" type="text"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-input type="text" formControlName="description"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Price</ion-label>
+            <ion-input type="number" formControlName="price"></ion-input>
+          </ion-item>
+  
+        <div padding>
+          <button ion-button full block (click)="save()" type="submit" [disabled]="!produceForm.valid">Save</button>
+        </div>
+        <div padding>
+          <button ion-button full block (click)="cancel()" color="danger">Cancel</button>
+        </div>
+      </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>

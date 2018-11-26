@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { NavController, NavParams, ToastController, ViewController } from "ionic-angular";
+import { NavController, ToastController } from "ionic-angular";
 import { AuthService } from "../../services/auth.service";
 import { ListPage } from "../list/list";
 import { RegisterPage } from "../register/register";

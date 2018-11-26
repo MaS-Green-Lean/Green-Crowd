@@ -38,6 +38,12 @@
         </ion-row>
          </ion-item>
       </ion-list>
+      <div padding *ngIf="authService.user.value.role === 'Manager'">
+        <button ion-button full block (click)="editItem()">Edit Item</button>
+      </div>
+      <div padding *ngIf="authService.user.value.role === 'Manager'">
+        <button ion-button full block color="danger" (click)="deleteItem()">Delete Item</button>
+      </div>
     </ion-card-content>
   </ion-card>
 
